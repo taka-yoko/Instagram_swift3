@@ -30,7 +30,11 @@ class ViewController: UIViewController {
         //currentUserがnilならログインしていない
         if FIRAuth.auth()?.currentUser == nil {
             //ログインしていないときの処理
-                   }
+            dispatch_async(dispatch_get_main_queue()){
+                let loginViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Login")
+                self.presentViewController(loginViewController!, animated: true, completion: nil)
+            }
+        }
     }
     
     
